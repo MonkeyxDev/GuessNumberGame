@@ -1,4 +1,5 @@
 import customtkinter as ctk
+import webbrowser
 
 class GuessNumberUi(ctk.CTk):
     def __init__(self):
@@ -105,9 +106,19 @@ class GuessNumberUi(ctk.CTk):
         self.exit_btn.grid(column=0, row=2, pady=8)
 
         # ---------------Tag Developer  (Game)---------------
-        dev_info = ctk.CTkLabel(self.frame_game, text="Developer : MonkeyxDev", font=("Arial", 18))
+        dev_info = ctk.CTkLabel(self.frame_game,text="Developed by MonkeyxDev",text_color=("black","white"),cursor="hand2",font=("Arial",16))
         dev_info.pack(side="bottom", pady=10)
+        def on_enter(e):
+            dev_info.configure(text_color="#1a0dab")
 
+        def on_leave(e):
+            dev_info.configure(text_color=("black","white"))
+
+        def open_link(e=None):
+            webbrowser.open("https://github.com/MonkeyxDev")
+        dev_info.bind("<Enter>", on_enter)
+        dev_info.bind("<Leave>", on_leave)
+        dev_info.bind("<Button-1>", open_link)
 
 class OkMessage(ctk.CTkToplevel):
     def __init__(self, master, title, message):
