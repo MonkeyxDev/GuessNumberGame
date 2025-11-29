@@ -3,6 +3,8 @@
 A modern and interactive number guessing game built with **Python** and **CustomTkinter**.  
 This game challenges the player to guess a random number between 1 and 100 with limited attempts based on the selected difficulty.
 
+![Guess Number Game Project Preview](guessnumbergame.png)
+
 ## 🚀 Features
 - ✔️ Modern GUI with CustomTkinter  
 - ✔️ Difficulty levels: Easy / Normal / Hard  
