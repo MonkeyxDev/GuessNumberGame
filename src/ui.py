@@ -120,6 +120,12 @@ class GuessNumberUi(ctk.CTk):
         dev_info.bind("<Leave>", on_leave)
         dev_info.bind("<Button-1>", open_link)
 
+        # ---------------Status Bar---------------
+        self.my_status = ctk.CTkLabel(self.frame_settings, text="Hints are on / Difficulty is on Easy ", anchor="w", corner_radius=5, fg_color="#ABABAB", text_color="black")
+        self.my_status.pack(fill="x", side="bottom", ipady=2)
+
+
+
 class OkMessage(ctk.CTkToplevel):
     def __init__(self, master, title, message):
         super().__init__(master)
