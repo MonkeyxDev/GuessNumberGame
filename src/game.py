@@ -9,7 +9,7 @@ class GuessNumberGame:
         self.chance = 20
         self.try_number = 0
         self.difficulty = "Easy"
-        self.Hint_State = "on"
+        self.Hint_State = "On"
         self.ui.guess_btn.configure(command=self.check_guess)
         self.ui.newgame_btn.configure(command=self.new_game)
         self.ui.exit_btn.configure(command=self.exit_app)
@@ -65,7 +65,8 @@ class GuessNumberGame:
         self.ui.guess_entry.delete(0, "end")
         self.ui.guess_btn.configure(state="normal")
         self.ui.count_label.configure(text=f"You Have {self.chance} Chance To Guess")
-        self.ui.my_status.configure(text=f"Updated to:   Hints are {self.Hint_State} / Difficulty is on {self.difficulty} ")
+        self.ui.my_status.configure(text=f"Updated to:\nHints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150)
+        self.ui.my_status.after(2000, lambda: self.ui.my_status.configure(text=f"Hints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150))
 
         self.update_hint_display()
 
@@ -79,11 +80,15 @@ class GuessNumberGame:
 
     def toggle_hint(self, *args):
         if self.ui.hint_var.get() == "on":
-            self.Hint_State = "on"
-            self.ui.my_status.configure(text=f"Updated to:   Hints are {self.Hint_State} / Difficulty is on {self.difficulty} ")
+            self.Hint_State = "On"
+            self.ui.my_status.configure(text=f"Updated to:\nHints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150)
+            self.ui.my_status.after(2000, lambda: self.ui.my_status.configure(text=f"Hints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150))
+
         else:
-            self.Hint_State = "off"
-            self.ui.my_status.configure(text=f"Updated to:   Hints are {self.Hint_State} / Difficulty is on {self.difficulty} ")
+            self.Hint_State = "Off"
+            self.ui.my_status.configure(text=f"Updated to:\nHints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150)
+            self.ui.my_status.after(2000, lambda: self.ui.my_status.configure(text=f"Hints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150))
+
         self.update_hint_display()
 
     def change_theme(self, mode):

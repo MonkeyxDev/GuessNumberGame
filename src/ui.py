@@ -121,8 +121,11 @@ class GuessNumberUi(ctk.CTk):
         dev_info.bind("<Button-1>", open_link)
 
         # ---------------Status Bar---------------
-        self.my_status = ctk.CTkLabel(self.frame_settings, text="Hints are on / Difficulty is on Easy ", anchor="w", corner_radius=5, fg_color="#ABABAB", text_color="black")
+        self.my_status_title = ctk.CTkLabel(self.frame_settings, text="Details", font=("Arial", 24, "bold"), anchor="w", corner_radius=5, fg_color="#ABABAB", text_color="black")
+        self.my_status_title.pack(fill="x", side="top", ipady=2)
+        self.my_status = ctk.CTkLabel(self.frame_settings, width=150, height=150, font=("Arial", 16), text="Hints: On\nDifficulty: Easy", anchor="center", corner_radius=5, fg_color="#ABABAB", text_color="black")
         self.my_status.pack(fill="x", side="bottom", ipady=2)
+
 
 
 
