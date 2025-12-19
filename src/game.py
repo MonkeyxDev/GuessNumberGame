@@ -1,4 +1,4 @@
-from ui import GuessNumberUi,OkMessage
+from ui import GuessNumberUi, OkMessage
 import random
 import customtkinter as ctk
 
@@ -10,6 +10,7 @@ class GuessNumberGame:
         self.try_number = 0
         self.difficulty = "Easy"
         self.Hint_State = "On"
+
         self.ui.guess_btn.configure(command=self.check_guess)
         self.ui.newgame_btn.configure(command=self.new_game)
         self.ui.exit_btn.configure(command=self.exit_app)
@@ -25,7 +26,7 @@ class GuessNumberGame:
             OkMessage(self.ui, "Error", "Enter a Number")
             return
         self.chance -= 1
-        self.try_number +=1
+        self.try_number += 1
         self.ui.count_label.configure(text=f"You Have {self.chance} Chance To Guess")
         if guess == self.secret:
             OkMessage(self.ui, "Win", f"Congratulations, You Won! \n Number of tries: {self.try_number}")
@@ -36,7 +37,7 @@ class GuessNumberGame:
         elif guess > self.secret:
             self.ui.hint_label.configure(text="Lower!")
         if self.chance <= 0:
-            OkMessage(self.ui, "Lose", f"You Lose! \n The Number Was: {self.secret}" )
+            OkMessage(self.ui, "Lose", f"You Lose! \n The Number Was: {self.secret}")
             self.ui.guess_btn.configure(state="disabled")
             self.ui.hint_label.pack_forget()
 
@@ -65,9 +66,10 @@ class GuessNumberGame:
         self.ui.guess_entry.delete(0, "end")
         self.ui.guess_btn.configure(state="normal")
         self.ui.count_label.configure(text=f"You Have {self.chance} Chance To Guess")
-        self.ui.my_status.configure(text=f"Updated to:\nHints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150)
-        self.ui.my_status.after(2000, lambda: self.ui.my_status.configure(text=f"Hints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150))
-
+        self.ui.my_status.configure(text=f"Updated to:\nHints: {self.Hint_State}\nDifficulty: {self.difficulty}",
+                                    wraplength=150)
+        self.ui.my_status.after(2000, lambda: self.ui.my_status.configure(
+            text=f"Hints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150))
         self.update_hint_display()
 
     def update_hint_display(self):
@@ -78,17 +80,20 @@ class GuessNumberGame:
             if self.ui.hint_label.winfo_ismapped():
                 self.ui.hint_label.pack_forget()
 
+
     def toggle_hint(self, *args):
         if self.ui.hint_var.get() == "on":
             self.Hint_State = "On"
-            self.ui.my_status.configure(text=f"Updated to:\nHints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150)
-            self.ui.my_status.after(2000, lambda: self.ui.my_status.configure(text=f"Hints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150))
-
+            self.ui.my_status.configure(text=f"Updated to:\nHints: {self.Hint_State}\nDifficulty: {self.difficulty}",
+                                        wraplength=150)
+            self.ui.my_status.after(2000, lambda: self.ui.my_status.configure(
+                text=f"Hints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150))
         else:
             self.Hint_State = "Off"
-            self.ui.my_status.configure(text=f"Updated to:\nHints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150)
-            self.ui.my_status.after(2000, lambda: self.ui.my_status.configure(text=f"Hints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150))
-
+            self.ui.my_status.configure(text=f"Updated to:\nHints: {self.Hint_State}\nDifficulty: {self.difficulty}",
+                                        wraplength=150)
+            self.ui.my_status.after(2000, lambda: self.ui.my_status.configure(
+                text=f"Hints: {self.Hint_State}\nDifficulty: {self.difficulty}", wraplength=150))
         self.update_hint_display()
 
     def change_theme(self, mode):
@@ -96,6 +101,8 @@ class GuessNumberGame:
 
     def exit_app(self):
         self.ui.destroy()
+
+
 if __name__ == '__main__':
     ui = GuessNumberUi()
     game = GuessNumberGame(ui)
